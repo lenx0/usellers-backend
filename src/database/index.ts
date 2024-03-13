@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import autoIncrement from "mongoose-auto-increment";
 require('dotenv').config();
 
-const connectString = process.env.MONGO_URI as string;
+const connectString = process.env.MONGO_URL as string;
 
 mongoose.connect(connectString)
   .then(() => {
