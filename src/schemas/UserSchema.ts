@@ -1,48 +1,33 @@
 import mongoose from "../database";
 
-const orderSchema = new mongoose.Schema({
-  fullName: {
+const userSchema = new mongoose.Schema({
+  firstName: {
     type: String,
     required: true,
   },
-
-  cnpj: {
+  lastName: {
     type: String,
     required: true,
   },
-
+  birthDate: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    match: [/.+\@.+\..+/, 'Por favor, insira um e-mail válido'],
+  },
+  phone: {
+    type: String,
+    required: true,
+  },
   moment: {
     type: Date,
-    required: true,
     default: Date.now,
   },
-
-  address: {
-    street: {
-      type: String,
-      required: true,
-    },
-    number: {
-      type: String,
-      required: true,
-    },
-    complement: {
-      type: String,
-    }
-  },
-
-  login: {
-    type: String,
-    required: true,
-  },
-
-  password: {
-    type: String,
-    required: true,
-  },
-
 });
 
-const UserSchema = mongoose.model("user", orderSchema);
+const User = mongoose.model("User", userSchema);
 
-export default UserSchema;
+export default User;
